@@ -27,8 +27,8 @@
     geändert:
       ```for (int i = 0; i < 4; i++)```
 # Erstellen der eigenen Klasse ( Haus zeichnen via Turtlesim):
-  "abstract_turtle"-Klasse wir importiert um turtlesim einfacher zu nutzen
-  Pfad wurde geplant und in die Funktion drawHouse(int scale) eingefügt
+  "abstract_turtle"-Klasse wir importiert um turtlesim einfacher zu nutzen.
+  Der Pfad wurde geplant und in die Funktion drawHouse(int scale) eingefügt
   parameter scale bestimmt wie groß das Haus gezeichnet werden soll.
    
    
@@ -37,7 +37,7 @@
    
    
 
-Für die Bearbeitung der Aufgabe haben wir uns am Freitag (19.10.2018 9-13:00 getroffen sowie am Montag von 9:00 -11:00 / 16:00 -17:45) an der Fin getroffen.
+Für die Bearbeitung der Aufgabe haben wir uns am Freitag (19.10.2018 9-13:00 getroffen sowie am Montag von 9:00 -11:00 / 16:00 -18:00) an der Fin getroffen.
 
      Erik Stausebach hat die Klasse turtleHouse.cpp geschrieben.
      Dai Pham schrieb die Doku und beteiligte sich an der Suche nach Fehlern
