@@ -32,4 +32,4 @@
   parameter scale bestimmt wie groß das Haus gezeichnet werden soll.
    
        
-    Für die Bearbeitung der Aufgabe haben wir uns am Freitag (19.10.2018 9-13:00 getroffen sowie am Montag von 9:00 -11:00 / 16:00 -17:45) an der Fin getroffen.
+Für die Bearbeitung der Aufgabe haben wir uns am Freitag (19.10.2018 9-13:00 getroffen sowie am Montag von 9:00 -11:00 / 16:00 -17:45) an der Fin getroffen.
