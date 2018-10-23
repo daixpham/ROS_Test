@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     turtle->turn(45);
     turtle->forward( distance );
     draw_u( true );
-    turtle->forward( 2 * distance );
+    turtle->forward( 3 * distance );
     draw_u( false );
     turtle->forward( distance );
 
