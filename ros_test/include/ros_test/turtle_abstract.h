@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <turtlesim/Pose.h>
-
+#include <cmath>
 namespace tutorial {
 
 class AbstractTurtle {
@@ -15,6 +15,7 @@ class AbstractTurtle {
     geometry_msgs::Twist turn_left;
     geometry_msgs::Twist turn_right;
     geometry_msgs::Twist stop;
+    geometry_msgs::Twist msg;
 
     void poseCallback( const turtlesim::Pose::ConstPtr& msg_in ) {
         this->ready = true;
@@ -34,6 +35,7 @@ public:
         this->stop.angular.z = 0;
         this->turn_left.angular.z = velocity;
         this->turn_right.angular.z = (-1) * velocity;
+
 
         ros::NodeHandle nh;
 
@@ -59,7 +61,7 @@ public:
             if ( !ros::ok() ) { return; }
             ros::Duration(0.001).sleep();
             ros::spinOnce();
-            d_sqr = (this->current_pose.x - start_x) * (this->current_pose.x - start_x) + (this->current_pose.y - start_y) * (this->current_pose.y - start_y);
+            d_sqr = sqrt((this->current_pose.x - start_x) * (this->current_pose.x - start_x) + (this->current_pose.y - start_y) * (this->current_pose.y - start_y));
         } while ( d_sqr < length );
 
         this->pub_cmd_vel.publish( this->stop );
@@ -85,6 +87,28 @@ public:
 
         this->pub_cmd_vel.publish( this->stop );
     }
+
+    void arcs (double radius , double length) {
+      if ( !ros::ok() || radius <= 0 || length<=0){return;}
+      double start_x = this->current_pose.x;
+      double start_y = this->current_pose.y;
+      double current_angle,d_sqr = 0;
+      double target_angle = (length /(radius * M_PI)) * 180; // determine the angle
+      this->msg.linear.x=radius;
+      this->msg.angular.z=1;
+      while ( fabs(target_angle ) > current_angle && ros::ok() ) {
+        start_x = this->current_pose.x;
+        start_y = this->current_pose.y;
+        this->pub_cmd_vel.publish(msg);
+        ros::Duration(0.001).sleep();
+        ros::spinOnce();
+        d_sqr = sqrt(pow((this->current_pose.x - start_x),2) + pow((this->current_pose.y - start_y),2));
+        current_angle+= (2*std::asin(d_sqr/(2*radius)))*(180/M_PI); 
+      }
+      this->pub_cmd_vel.publish( this->stop );
+    }
+
+
 }; // class AbstractTurtle
 
 } // ns tutorial

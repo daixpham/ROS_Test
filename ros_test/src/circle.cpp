@@ -21,26 +21,18 @@ int main(int argc, char **argv)
    }
    srand(time(NULL));
    int m = rand() % 1000+1000; // Die größe des Kreisbogen - Hier wird der zufaellig bestimmt
-   int r = rand() % 6 +1; // Der Radius 
+   int r = rand() % 6 +1; // Der Radius
    draw_circlePart(m,r,false);
    ROS_INFO_STREAM("DONE");
    ros::Duration(5).sleep();
-   // Hier wird Kunst gemacht 	
+   // Hier wird Kunst gemacht
    ROS_INFO_STREAM("THIS IS WHERE THE ART BEGINS !");
    ros::Duration(1).sleep();
-   while(ros::ok()){ // Solange keine Fehler auftreten wird Kunst generiert 
-      m = rand() % 1000+1000; // Der Laufweg wird hier immer am beginn des Schleife zufaellig ausgewählt 
-      r = rand() % 6 +1;
-      int x = rand()%3;
-      if(x>0)
-        draw_circlePart(m,r,true);
-      else
-        draw_circle();
-   }
+
 
 }
 
-void draw_circlePart(int m,int r, bool k){ // Hier wird der Kreisbogen 
+void draw_circlePart(int m,int r, bool k){ // Hier wird der Kreisbogen
 int i=0;
    if(!k){
     m=2000;
@@ -55,18 +47,3 @@ geometry_msgs::Twist msg;
    usleep(100);
 }
 }
-
-
-void draw_circle(){
-   int i=0;
-   while(i<5000){
-      geometry_msgs::Twist msg;
-      msg.angular.z=2;
-      msg.linear.x=3;
-      pub.publish(msg);
-      usleep(100);
-      i++;
-}
-}
-
-
